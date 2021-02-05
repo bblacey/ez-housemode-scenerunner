@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+  ez-housemode-scenerunner:
+    image: gcr.io/bblacey/ez-housemode-scenerunner
+    network_mode: host
+    env_file:
+      - ./config.env
+    environment:
+      - SCENE_MAP="$$(<scene-map.json)"
+      - NODE_ENV=production
+    container_name: ez-housemode-scenerunner
+    restart: unless-stopped

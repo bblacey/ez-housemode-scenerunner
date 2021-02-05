@@ -1,0 +1,23 @@
+{
+  "name": "ez-housemode-scenerunner",
+  "version": "1.0.0",
+  "description": "Ezlo-Hub-Kit EZ-App that runs a scene on an Ezlo hub whenever it transitions to a new House Mode",
+  "main": "index.js",
+  "scripts": {
+    "launch": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bruce B. Lacey",
+  "license": "MIT",
+  "keywords": [
+    "Ezlo",
+    "Node",
+    "Automation",
+    "Zwave",
+    "Zigbee",
+    "ezlo-hub-kit"
+  ],
+  "dependencies": {
+    "ezlo-hub-kit": "^1.0.0-alpha.7"
+  }
+}

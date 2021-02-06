@@ -4,7 +4,7 @@
 Easy (EZ) Node.js app that runs a scene on Ezlo Hub(s) whenever the hub transitions to a new House Mode.  For convenience, the app is deployed as a dockerized app for Intel/AMD and ARM platforms.
 
 ## Motivation
-This EZ-App illustrates the simplicity of using [Ezlo-Hub-Kit](bblacey/ezlo-hub-kit) to discover hubs, register observers to asynchronously act on House Mode changes and execute scenes on Ezlo Hubs. This EZ-App will appeal to Vera Users who have grown accustomed to employing scenes triggered by House Mode changes because, as of this writing, Ezlo Hub scenes can not use House Mode changes as a trigger. [EZ-HouseMode-SceneRunner](bblacey/housemode-scenerunner) bridges this obvious gap until Ezlo implements the feature to trigger scenes by a House Mode change.
+This EZ-App illustrates the simplicity of using [Ezlo-Hub-Kit](https://github.com/bblacey/ezlo-hub-kit) to discover hubs, register observers to asynchronously act on House Mode changes and execute scenes on Ezlo Hubs. This EZ-App will appeal to Vera Users who have grown accustomed to employing scenes triggered by House Mode changes because, as of this writing, Ezlo Hub scenes can not use House Mode changes as a trigger. [EZ-HouseMode-SceneRunner](https://github.com/bblacey/ez-housemode-scenerunner) bridges this obvious gap until Ezlo implements the feature to trigger scenes by a House Mode change.
 
 ## How it works
 Easy HouseMode-SceneRunner registers House Mode change observers for each hub that it discovers on the local network.  Because Ezlo Hubs default to waiting 30 seconds to change to House Modes "Night", "Away" and "Vacation", it demonstrates how to use multiple hub observers. One Observer triggers when a hub starts to change House Modes and one another Observer triggers when the hub completes the House Mode change.  The former is simply used to log the fact that a hub has initiated a house mode change and the later is used to execute a scene for that mode.  For convenience, EZ-HouseMode-SceneRunner includes a default scene map but users are able to override it by providing a custom map as a JSON file that maps a scene to a scene name.  EZ-HouseMode-SceneRunner is intentionally limited to using a single scene name for each mode, meaning that multible Ezlo hubs need to use the same scene name for a given mode (e.g. Home => Return, Night => Sleep, Away => Leave, etc.).
@@ -62,10 +62,10 @@ There are a few take-aways from the log snippet above.  First, six hubs are disc
 The default scene map provides general scene names for each house mode.  EZ-HouseMode-SceneRunner will execute the named scene when a hub transitions to a new mode if that scene name exists on the hub.  So, if a user wants all their hubs to run a scene whenever they return home, they can either create a "Return" scene on each hub or create a custom name and provide a custom scene map to the app.
 ```JSON
 {
-  "1": "Return",   // Home mode
-  "2": "Leave",    // Away mode
-  "3": "Sleep",    // Night Mode
-  "4": "Vacation"  // Vacation Mode
+  "1": "Return",
+  "2": "Leave",
+  "3": "Sleep",
+  "4": "Vacation"
 }
 ```
 For example, if a user wanted the scene that is run their hubs transition to Night Mode (3) to be call "Boo-yah", they would create a file with the contents above and change the name to "Boo-yah" for the corresponding mode.
@@ -85,7 +85,7 @@ For those users who prefer to use `docker-compose`, you can download the [docker
 ```shell
 docker-compose up -d .
 ```
-Compose users may find this [GitHub gist](https://gist.github.com/bblacey/9414231d29132a1f40c38f8ec04a915d) useful.  It is a docker-compose file that will start all 3 EZ-Apps with in a single compose file.
+Compose users may find the [EZ-Apps](https://github.com/bblacey/ez-apps) github project useful.  It comprises a docker-compose file with unified config files need to run the EZ-App suite with a simple `docker-compose up -d`.
 
 #### *docker run --detatch* (alternative)
 Start the relay in detached mode.
